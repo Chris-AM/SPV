@@ -1,3 +1,9 @@
+DROP USER IF EXISTS 'db_admin'@'localhost';
+
+CREATE USER 'db_admin'@'localhost' IDENTIFIED BY '1234';
+
+GRANT ALL PRIVILEGES ON *.* TO 'db_admin'@'localhost';
+
 DROP SCHEMA IF EXISTS `INVENTARIO_SPV`;
 -- -----------------------------------------------------
 -- Schema INVENTARIO_SPV
