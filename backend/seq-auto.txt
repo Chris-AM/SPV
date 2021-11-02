@@ -1,1 +1,30 @@
-sequelize-auto -h <host> -d <database> -u <user> -x [password] -p [port]  --dialect [dialect] -c [/path/to/config] -o [/path/to/models] -t [tableName]
+sequelize-auto -h localhost -d INVENTARIO_SPV -u db_admin -x 1234 -p 3306  --dialect mysql -c "./src/config/config.json" -o "./src/models" -t [tableName]
++--------------------------+
+| Tables_in_inventario_spv |
++--------------------------+
+| CAJA                     |
+| CLIENTE                  |
+| COMPRA                   |
+| DEPARTAMENTO             |
+| DETALLE_COMPRA           |
+| DETALLE_VENTA            |
+| HISTORIAL_PRODUCTO       |
+| INVENTARIO               |
+| MEDIO_PAGO               |
+| MOVIMIENTO               |
+| PERSONA                  |
+| PRODUCTO                 |
+| PROVEEDOR                |
+| USUARIO                  |
+| VENTA                    |
++--------------------------+
+
+
+
+
+
+
+
+
+
+
