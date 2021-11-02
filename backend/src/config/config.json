@@ -1,0 +1,24 @@
+
+{
+    "development": {
+      "username": "db_admin",
+      "password": 1234,
+      "database": "INVENTARIO_SPV",
+      "host": "localhost",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "db_admin",
+      "password": 1234,
+      "database": "INVENTARIO_SPV",
+      "host": "localhost",
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "db_admin",
+      "password": 1234,
+      "database": "INVENTARIO_SPV",
+      "host": "localhost",
+      "dialect": "mysql"
+    }
+  }
