@@ -1,11 +1,6 @@
 const Sequelize = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  return HISTORIAL_PRODUCTO.init(sequelize, DataTypes);
-}
-
-class HISTORIAL_PRODUCTO extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-  super.init({
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('HISTORIAL_PRODUCTO', {
     ID_HISTORIAL_PRODUCTO: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -50,6 +45,4 @@ class HISTORIAL_PRODUCTO extends Sequelize.Model {
       },
     ]
   });
-  return HISTORIAL_PRODUCTO;
-  }
-}
+};

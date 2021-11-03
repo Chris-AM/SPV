@@ -1,36 +1,36 @@
-const DataTypes = require("sequelize").DataTypes;
-const _CAJA = require("./caja.model");
-const _CLIENTE = require("./cliente.model");
-const _COMPRA = require("./compra.model");
-const _DEPARTAMENTO = require("./departamento.model");
-const _DETALLE_COMPRA = require("./detalleCompra.model");
-const _DETALLE_VENTA = require("./detalleVenta.model");
-const _HISTORIAL_PRODUCTO = require("./historialProducto.model");
-const _INVENTARIO = require("./inventario.model");
-const _MEDIO_PAGO = require("./medioPago.model");
-const _MOVIMIENTO = require("./movimiento.model");
-const _PERSONA = require("./persona.model");
-const _PRODUCTO = require("./producto.model");
-const _PROVEEDOR = require("./proveedor.model");
-const _USUARIO = require("./usuario.model");
-const _VENTA = require("./venta.model");
+var DataTypes = require("sequelize").DataTypes;
+var _CAJA = require("./CAJA");
+var _CLIENTE = require("./CLIENTE");
+var _COMPRA = require("./COMPRA");
+var _DEPARTAMENTO = require("./DEPARTAMENTO");
+var _DETALLE_COMPRA = require("./DETALLE_COMPRA");
+var _DETALLE_VENTA = require("./DETALLE_VENTA");
+var _HISTORIAL_PRODUCTO = require("./HISTORIAL_PRODUCTO");
+var _INVENTARIO = require("./INVENTARIO");
+var _MEDIO_PAGO = require("./MEDIO_PAGO");
+var _MOVIMIENTO = require("./MOVIMIENTO");
+var _PERSONA = require("./PERSONA");
+var _PRODUCTO = require("./PRODUCTO");
+var _PROVEEDOR = require("./PROVEEDOR");
+var _USUARIO = require("./USUARIO");
+var _VENTA = require("./VENTA");
 
 function initModels(sequelize) {
-  const CAJA = _CAJA(sequelize, DataTypes);
-  const CLIENTE = _CLIENTE(sequelize, DataTypes);
-  const COMPRA = _COMPRA(sequelize, DataTypes);
-  const DEPARTAMENTO = _DEPARTAMENTO(sequelize, DataTypes);
-  const DETALLE_COMPRA = _DETALLE_COMPRA(sequelize, DataTypes);
-  const DETALLE_VENTA = _DETALLE_VENTA(sequelize, DataTypes);
-  const HISTORIAL_PRODUCTO = _HISTORIAL_PRODUCTO(sequelize, DataTypes);
-  const INVENTARIO = _INVENTARIO(sequelize, DataTypes);
-  const MEDIO_PAGO = _MEDIO_PAGO(sequelize, DataTypes);
-  const MOVIMIENTO = _MOVIMIENTO(sequelize, DataTypes);
-  const PERSONA = _PERSONA(sequelize, DataTypes);
-  const PRODUCTO = _PRODUCTO(sequelize, DataTypes);
-  const PROVEEDOR = _PROVEEDOR(sequelize, DataTypes);
-  const USUARIO = _USUARIO(sequelize, DataTypes);
-  const VENTA = _VENTA(sequelize, DataTypes);
+  var CAJA = _CAJA(sequelize, DataTypes);
+  var CLIENTE = _CLIENTE(sequelize, DataTypes);
+  var COMPRA = _COMPRA(sequelize, DataTypes);
+  var DEPARTAMENTO = _DEPARTAMENTO(sequelize, DataTypes);
+  var DETALLE_COMPRA = _DETALLE_COMPRA(sequelize, DataTypes);
+  var DETALLE_VENTA = _DETALLE_VENTA(sequelize, DataTypes);
+  var HISTORIAL_PRODUCTO = _HISTORIAL_PRODUCTO(sequelize, DataTypes);
+  var INVENTARIO = _INVENTARIO(sequelize, DataTypes);
+  var MEDIO_PAGO = _MEDIO_PAGO(sequelize, DataTypes);
+  var MOVIMIENTO = _MOVIMIENTO(sequelize, DataTypes);
+  var PERSONA = _PERSONA(sequelize, DataTypes);
+  var PRODUCTO = _PRODUCTO(sequelize, DataTypes);
+  var PROVEEDOR = _PROVEEDOR(sequelize, DataTypes);
+  var USUARIO = _USUARIO(sequelize, DataTypes);
+  var VENTA = _VENTA(sequelize, DataTypes);
 
   DETALLE_VENTA.belongsTo(CLIENTE, { as: "CLIENTE_CLIENTE", foreignKey: "CLIENTE"});
   CLIENTE.hasMany(DETALLE_VENTA, { as: "DETALLE_VENTa", foreignKey: "CLIENTE"});
@@ -93,4 +93,6 @@ function initModels(sequelize) {
     VENTA,
   };
 }
-module.exports = {initModels};
+module.exports = initModels;
+module.exports.initModels = initModels;
+module.exports.default = initModels;

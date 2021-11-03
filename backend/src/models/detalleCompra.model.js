@@ -1,11 +1,6 @@
 const Sequelize = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  return DETALLE_COMPRA.init(sequelize, DataTypes);
-}
-
-class DETALLE_COMPRA extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-  super.init({
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('DETALLE_COMPRA', {
     ID_DETALLE_COMPRA: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -72,6 +67,4 @@ class DETALLE_COMPRA extends Sequelize.Model {
       },
     ]
   });
-  return DETALLE_COMPRA;
-  }
-}
+};

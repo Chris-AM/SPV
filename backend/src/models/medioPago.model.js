@@ -1,11 +1,6 @@
 const Sequelize = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  return MEDIO_PAGO.init(sequelize, DataTypes);
-}
-
-class MEDIO_PAGO extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-  super.init({
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('MEDIO_PAGO', {
     ID_MEDIO_PAGO: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -31,6 +26,4 @@ class MEDIO_PAGO extends Sequelize.Model {
       },
     ]
   });
-  return MEDIO_PAGO;
-  }
-}
+};
