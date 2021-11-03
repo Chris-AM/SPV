@@ -1,19 +1,19 @@
 const DataTypes = require("sequelize").DataTypes;
-const _CAJA = require("./CAJA");
-const _CLIENTE = require("./CLIENTE");
-const _COMPRA = require("./COMPRA");
-const _DEPARTAMENTO = require("./DEPARTAMENTO");
-const _DETALLE_COMPRA = require("./DETALLE_COMPRA");
-const _DETALLE_VENTA = require("./DETALLE_VENTA");
-const _HISTORIAL_PRODUCTO = require("./HISTORIAL_PRODUCTO");
-const _INVENTARIO = require("./INVENTARIO");
-const _MEDIO_PAGO = require("./MEDIO_PAGO");
-const _MOVIMIENTO = require("./MOVIMIENTO");
-const _PERSONA = require("./PERSONA");
-const _PRODUCTO = require("./PRODUCTO");
-const _PROVEEDOR = require("./PROVEEDOR");
-const _USUARIO = require("./USUARIO");
-const _VENTA = require("./VENTA");
+const _CAJA = require("./caja.model");
+const _CLIENTE = require("./cliente.model");
+const _COMPRA = require("./compra.model");
+const _DEPARTAMENTO = require("./departamento.model");
+const _DETALLE_COMPRA = require("./detalleCompra.model");
+const _DETALLE_VENTA = require("./detalleVenta.model");
+const _HISTORIAL_PRODUCTO = require("./historialProducto.model");
+const _INVENTARIO = require("./inventario.model");
+const _MEDIO_PAGO = require("./medioPago.model");
+const _MOVIMIENTO = require("./movimiento.model");
+const _PERSONA = require("./persona.model");
+const _PRODUCTO = require("./producto.model");
+const _PROVEEDOR = require("./proveedor.model");
+const _USUARIO = require("./usuario.model");
+const _VENTA = require("./venta.model");
 
 function initModels(sequelize) {
   const CAJA = _CAJA(sequelize, DataTypes);
