@@ -14,6 +14,7 @@ dbConfig();
 app.use(cors());
 
 //Rutas("ruta", "archivo de ruta")
- //app.use("/api/productos", require("./routes/productos.routes"));
+app.use("/api/productos", require("./routes/producto.routes"));
+app.use("/api/departamentos", require("./routes/departamento.routes"));
 //se inicia servidor
 app.listen(port, ()=>{console.log("servidor en puerto", port)});

@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     CODE_BAR: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     NOMBRE_PRODUCTO: {
       type: DataTypes.STRING(50),
