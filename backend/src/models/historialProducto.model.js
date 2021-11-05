@@ -1,8 +1,8 @@
-const {Sequelize, DataTypes, Model} = require('sequelize');
-const  {sequelize} = require('../config/db.config');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../config/db.config');
 const Producto = require('./producto.model');
 
-class HistorialProducto extends Model {}
+class HistorialProducto extends Model { }
 
 HistorialProducto.init({
   ID_HISTORIAL_PRODUCTO: {
@@ -50,6 +50,7 @@ HistorialProducto.init({
   ]
 })
 
-HistorialProducto.belongsTo(Producto, { as: "PRODUCTO_PRODUCTO", foreignKey: "PRODUCTO"});
-
+HistorialProducto.associations = function (models) {
+  HistorialProducto.belongsTo(models.Producto, { as: "Producto", foreignKey: "PRODUCTO" });
+}
 module.exports = HistorialProducto;

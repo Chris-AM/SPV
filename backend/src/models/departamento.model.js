@@ -35,6 +35,10 @@ Departamento.init({
   ]
 })
 
-Departamento.hasMany(Producto, { as: "PRODUCTOs", foreignKey: "DEPARTAMENTO"});
-
+Departamento.associations = function(models){
+  Departamento.hasMany(models.Producto, {
+    foreignKey: 'ID_DEPARTAMENTO',
+    as: 'productos'
+  });
+}
 module.exports = Departamento

@@ -76,9 +76,25 @@ DetalleVenta.init({
 
 });
 
-DetalleVenta.belongsTo(Usuario, { as: "Vendedor", foreignKey: "USUARIO"});
-DetalleVenta.belongsTo(Venta, { as: "NroVenta", foreignKey: "VENTA"});
-DetalleVenta.belongsTo(Cliente, { as: "CLIENTE_CLIENTE", foreignKey: "CLIENTE"});
-DetalleVenta.hasMany(Caja, { as: "CAJAs", foreignKey: "DETALLE_VENTA"});
+DetalleVenta.associations = function(models) {
+  DetalleVenta.belongsTo(models.Venta, {
+    foreignKey: 'VENTA',
+    as: 'venta'
+  });
+  DetalleVenta.belongsTo(models.Usuario, {
+    foreignKey: 'USUARIO',
+    as: 'usuario'
+  });
+  DetalleVenta.belongsTo(models.Cliente, {
+    foreignKey: 'CLIENTE',
+    as: 'cliente'
+  });
+  DetalleVenta.hasMany(models.Caja, {
+    foreignKey: 'DETALLE_VENTA',
+    as: 'cajas'
+  });
+
+};
+
 
 module.exports = DetalleVenta;

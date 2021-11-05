@@ -1,6 +1,6 @@
 const {Sequelize, DataTypes, Model} = require('sequelize');
 const {sequelize} = require('../config/db.config');
-const Compra = require('./compra.model');
+//const Compra = require('./compra.model');
 
 class MedioPago extends Model {}
 
@@ -31,8 +31,16 @@ MedioPago.init({
   ]
 });
 
-MedioPago.hasMany(Compra, { as: "COMPRAs", foreignKey: "MEDIO_PAGO"});
-MedioPago.hasMany(Venta, { as: "VENTa", foreignKey: "MEDIO_PAGO"});
 
+MedioPago.associations = function (models) {
+  MedioPago.hasMany(models.Compra, {
+    foreignKey: 'ID_MEDIO_PAGO',
+    as: 'compras'
+  });
+  MedioPago.hasMany(models.Pago, {
+    foreignKey: 'ID_MEDIO_PAGO',
+    as: 'pagos'
+  });  
+};
 
 module.exports = MedioPago;

@@ -1,4 +1,4 @@
-const { Router } = require('express');
+/* const { Router } = require('express');
 const { check } = require('express-validator');
 const { actualizarProducto, 
     crearProducto, 
@@ -27,4 +27,4 @@ router.put('/:id', [
     check('VENCE', 'La fecha de vencimiento es obligatoria').not().isEmpty()
 ], actualizarProducto);
 router.delete('/:id', eliminarProducto);
-module.exports = router;
+module.exports = router; */

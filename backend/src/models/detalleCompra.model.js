@@ -76,9 +76,10 @@ DetalleCompra.init({
 
 });
 
-DetalleCompra.belongsTo(Compra, { as: "COMPRA_COMPRA", foreignKey: "COMPRA"});
-DetalleCompra.hasMany(Caja, { as: "CAJAs", foreignKey: "DETALLE_COMPRA"});
-DetalleCompra.belongsTo(Proveedor, { as: "PROVEEDOR_PROVEEDOR", foreignKey: "PROVEEDOR"});
-DetalleCompra.belongsTo(Usuario, { as: "Comprador", foreignKey: "USUARIO"});
-
+DetalleCompra.associations = function (models) {
+  DetalleCompra.belongsTo(models.Compra, { as: "COMPRA_COMPRA", foreignKey: "COMPRA"});
+  DetalleCompra.hasMany(models.Caja, { as: "CAJAs", foreignKey: "DETALLE_COMPRA"});
+  DetalleCompra.belongsTo(models.Proveedor, { as: "PROVEEDOR_PROVEEDOR", foreignKey: "PROVEEDOR"});
+  DetalleCompra.belongsTo(models.Usuario, { as: "Comprador", foreignKey: "USUARIO"});
+};
 module.exports = DetalleCompra;

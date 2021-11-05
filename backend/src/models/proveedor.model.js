@@ -1,9 +1,9 @@
-const {Sequelize, DataTypes, Model} = require('sequelize');
-const {sequelize} = require('../config/db.config');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../config/db.config');
 const DetalleCompra = require('./detalleCompra.model');
 const Inventario = require('./inventario.model');
 
-class Proveedor extends Model {}
+class Proveedor extends Model { }
 
 Proveedor.init({
   ID_PROVEEDOR: {
@@ -42,9 +42,17 @@ Proveedor.init({
       ]
     },
   ]
-})
+});
 
-Proveedor.hasMany(DetalleCompra, { as: "DETALLE_COMPRAs", foreignKey: "PROVEEDOR"});
-Proveedor.hasMany(Inventario, { as: "INVENTARIOs", foreignKey: "PROVEEDOR"});
+Proveedor.associations = function (models) {
+  Proveedor.hasMany(models.DetalleCompra, {
+    foreignKey: 'ID_PROVEEDOR',
+    as: 'detalleCompras'
+  });
+  Proveedor.hasMany(models.Inventario, {
+    foreignKey: 'ID_PROVEEDOR',
+    as: 'inventarios'
+  });
+}
 
 module.exports = Proveedor

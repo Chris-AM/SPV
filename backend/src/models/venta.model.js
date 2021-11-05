@@ -75,9 +75,10 @@ Venta.init({
   ]
 });
 
-Venta.belongsTo(MedioPago, { as: "MEDIO_PAGO_MEDIO_PAGO", foreignKey: "MEDIO_PAGO"});
-Venta.belongsTo(Movimiento, { as: "INFORMACION_MOVIMIENTO_MOVIMIENTO", foreignKey: "INFORMACION_MOVIMIENTO"});
-Venta.belongsTo(Producto, { as: "PRODUCTO_PRODUCTO", foreignKey: "PRODUCTO"});
-Venta.hasMany(DetalleVenta, { as: "DETALLE_VENTa", foreignKey: "VENTA"});
-
+Venta.associations = function (models){
+  Venta.belongsTo(models.MedioPago, { as: "MEDIO_PAGO_MEDIO_PAGO", foreignKey: "MEDIO_PAGO"});
+  Venta.belongsTo(models.Movimiento, { as: "INFORMACION_MOVIMIENTO_MOVIMIENTO", foreignKey: "INFORMACION_MOVIMIENTO"});
+  Venta.belongsTo(models.Producto, { as: "PRODUCTO_PRODUCTO", foreignKey: "PRODUCTO"});
+  Venta.hasMany(models.DetalleVenta, { as: "DETALLE_VENTa", foreignKey: "VENTA"});
+}
 module.exports = Venta;

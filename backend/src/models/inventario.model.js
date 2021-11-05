@@ -78,10 +78,21 @@ Inventario.init({
   ]
 });
 
-Inventario.belongsTo(Cliente, { as: "CLIENTE_CLIENTE", foreignKey: "CLIENTE"});
-Inventario.belongsTo(Producto, { as: "PRODUCTO_PRODUCTO", foreignKey: "PRODUCTO"});
-Inventario.belongsTo(Proveedor, { as: "PROVEEDOR_PROVEEDOR", foreignKey: "PROVEEDOR"});
+Inventario.associations = function(models) {
+  Inventario.belongsTo(models.Producto, {
+    foreignKey: 'PRODUCTO',
+    as: 'producto'
+  });
+  Inventario.belongsTo(models.Proveedor, {
+    foreignKey: 'PROVEEDOR',
+    as: 'proveedor'
+  });
+  Inventario.belongsTo(models.Cliente, {
+    foreignKey: 'CLIENTE',
+    as: 'cliente'
+  });
+};
 
-console.log('Inventario esta conectado?', Inventario === sequelize.model.INVENTARIO);
+console.log('Inventario esta conectado?', Inventario === sequelize.models.Inventario);
 
 module.exports = Inventario;

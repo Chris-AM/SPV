@@ -57,7 +57,9 @@ Caja.init({
     },
   ]
 })
-Caja.belongsTo(DetalleCompra, { as: "DETALLE_COMPRA_DETALLE_COMPRA", foreignKey: "DETALLE_COMPRA"});
-Caja.belongsTo(DetalleVenta, { as: "DETALLE_VENTA_DETALLE_VENTum", foreignKey: "DETALLE_VENTA"});
+Caja.associations = function (models) {
+  Caja.belongsTo(models.DetalleCompra, { as: "DETALLE_COMPRA_DETALLE_COMPRA", foreignKey: "DETALLE_COMPRA"});
+  Caja.belongsTo(models.DetalleVenta, { as: "DETALLE_VENTA_DETALLE_VENTum", foreignKey: "DETALLE_VENTA"});
+}
 
 module.exports = Caja;

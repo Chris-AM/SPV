@@ -75,9 +75,22 @@ Compra.init({
   ]
 });
 
-Compra.hasMany(DetalleCompra, { as: "DETALLE_COMPRAs", foreignKey: "COMPRA"});
-Compra.belongsTo(MedioPago, { as: "MEDIO_PAGO_MEDIO_PAGO", foreignKey: "MEDIO_PAGO"});
-Compra.belongsTo(Movimiento, { as: "INFORMACION_MOVIMIENTO_MOVIMIENTO", foreignKey: "INFORMACION_MOVIMIENTO"});
-Compra.belongsTo(Producto, { as: "PRODUCTO_PRODUCTO", foreignKey: "PRODUCTO"});
-
+Compra.associations = function(models){
+  Compra.hasMany(models.DetalleCompra, {
+    foreignKey: 'COMPRA',
+    as: 'detalleCompras'
+  });
+  Compra.belongsTo(models.MedioPago, {
+    foreignKey: 'MEDIO_PAGO',
+    as: 'medioPago'
+  });
+  Compra.belongsTo(models.Movimiento, {
+    foreignKey: 'INFORMACION_MOVIMIENTO',
+    as: 'movimiento'
+  });
+  Compra.belongsTo(models.Producto, {
+    foreignKey: 'PRODUCTO',
+    as: 'producto'
+  });
+}
 module.exports = Compra;

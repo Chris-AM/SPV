@@ -36,7 +36,17 @@ Movimiento.init({
   ]
 });
 
-Movimiento.hasMany(Compra, { as: "COMPRAs", foreignKey: "INFORMACION_MOVIMIENTO"});
-Movimiento.hasMany(Venta, { as: "VENTa", foreignKey: "INFORMACION_MOVIMIENTO"});
+Movimiento.associations = function(models) {
+  Movimiento.hasMany(models.Compra, {
+    foreignKey: 'ID_MOVIMIENTO',
+    sourceKey: 'ID_MOVIMIENTO'
+  });
+  Movimiento.hasMany(models.Venta, {
+    foreignKey: 'ID_MOVIMIENTO',
+    sourceKey: 'ID_MOVIMIENTO'
+  });
+};
+//Movimiento.hasMany(Compra, { as: "COMPRAs", foreignKey: "INFORMACION_MOVIMIENTO"});
+//Movimiento.hasMany(Venta, { as: "VENTa", foreignKey: "INFORMACION_MOVIMIENTO"});
 
 module.exports = Movimiento;

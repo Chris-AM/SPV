@@ -1,9 +1,9 @@
-const {Sequelize, DataTypes, Model} = require('sequelize');
-const {sequelize} = require('../config/db.config');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../config/db.config');
 const Cliente = require('./cliente.model');
 const Usuario = require('./usuario.model');
 
-class Persona extends Model {}
+class Persona extends Model { }
 Persona.init({
   ID_PERSONA: {
     autoIncrement: true,
@@ -31,9 +31,10 @@ Persona.init({
   sequelize,
   modelName: 'PERSONA'
 });
-Persona.hasMany(Cliente, { as: "Clientes", foreignKey: "PERSONA"});
-Persona.hasMany(Usuario, { as: "Usuarios", foreignKey: "PERSONA"});
-
+Persona.associations = function (models) {
+  Persona.hasMany(models.Cliente, { as: "Clientes", foreignKey: "PERSONA" });
+  Persona.hasMany(models.Usuario, { as: "Usuarios", foreignKey: "PERSONA" });
+};
 console.log('Persona está conectado?', Persona === sequelize.models.PERSONA);
 
 module.exports = Persona

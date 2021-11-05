@@ -48,10 +48,11 @@ Usuario.init({
   ]
 });
 
-Usuario.belongsTo(Persona, { as: "Num_Persona", foreignKey: "PERSONA"});
-Usuario.hasMany(DetalleCompra, { as: "Comprador", foreignKey: "USUARIO"});
-Usuario.hasMany(DetalleVenta, { as: "Vendedor", foreignKey: "USUARIO"});
-
-console.log('esta usuario conectado?', Usuario === sequelize.models.USUARIO)
+Usuario.associations = function (models) {
+  Usuario.belongsTo(models.Persona, { as: "Num_Persona", foreignKey: "PERSONA"});
+  Usuario.hasMany(models.DetalleCompra, { as: "Comprador", foreignKey: "USUARIO"});
+  Usuario.hasMany(models.DetalleVenta, { as: "Vendedor", foreignKey: "USUARIO"});
+};
+console.log('esta usuario conectado?', Usuario === sequelize.models.Usuario)
 
 module.exports = Usuario;

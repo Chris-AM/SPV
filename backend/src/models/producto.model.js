@@ -1,12 +1,12 @@
-const {Sequelize, DataTypes, Model} = require('sequelize');
-const {sequelize} = require('../config/db.config');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../config/db.config');
 const Compra = require('./compra.model');
-const Departamento = require('./departamento.model');
-const HistorialProducto = require('./historialProducto.model');
+//const Departamento = require('./departamento.model');
+//const HistorialProducto = require('./historialProducto.model');
 const Inventario = require('./inventario.model');
 const Venta = require('./venta.model');
 
-class Producto extends Model{}
+class Producto extends Model { }
 
 Producto.init({
   ID_PRODUCTO: {
@@ -74,11 +74,29 @@ Producto.init({
   ]
 });
 
-Producto.belongsTo(Departamento, { as: "DEPARTAMENTO_DEPARTAMENTO", foreignKey: "DEPARTAMENTO"});
-Producto.hasMany(Compra, { as: "COMPRAs", foreignKey: "PRODUCTO"});
-Producto.hasMany(HistorialProducto, { as: "HISTORIAL_PRODUCTOs", foreignKey: "PRODUCTO"});
-Producto.hasMany(Inventario, { as: "INVENTARIOs", foreignKey: "PRODUCTO"});
-Producto.hasMany(Venta, { as: "VENTa", foreignKey: "PRODUCTO"});
+Producto.associations = function (models) {
+  Producto.hasMany(models.Compra, {
+    foreignKey: 'ID_PRODUCTO',
+    as: 'compras'
+  });
+  Producto.hasMany(models.Inventario, {
+    foreignKey: 'ID_PRODUCTO',
+    as: 'inventarios'
+  });
+  Producto.hasMany(models.Venta, {
+    foreignKey: 'ID_PRODUCTO',
+    as: 'ventas'
+  });
+  Producto.hasMany(models.HistorialProducto, {
+    foreignKey: 'ID_PRODUCTO',
+    as: 'historial-producto'
+  });
+  Producto.belongsTo(models.Departamento, {
+    foreignKey: 'DEPARTAMENTO',
+    as: 'departamento'
+  });
+
+}
 
 console.log('tabla producto conectada?', Producto === sequelize.models.Producto)
 

@@ -46,10 +46,20 @@ Cliente.init({
 });
 
 
-Cliente.hasMany(DetalleVenta, { as: "DETALLE_VENTa", foreignKey: "CLIENTE"});
-Cliente.hasMany(Inventario, { as: "INVENTARIOs", foreignKey: "CLIENTE"});
-Cliente.belongsTo(Persona, { as: "PERSONA_PERSONA", foreignKey: "PERSONA"});
+Cliente.associations = function(models) {
+  Cliente.hasMany(models.DetalleVenta, {
+    foreignKey: 'CLIENTE',
+    as: 'detalleVentas'
+  });
+  Cliente.hasMany(models.Inventario, {
+    foreignKey: 'CLIENTE',
+    as: 'inventario'
+  });
+  Cliente.belongsTo(models.Persona, {
+    foreignKey: 'PERSONA',
+    as: 'persona'
+  });
+};
+console.log('Cliente esta conectado?', Cliente === sequelize.models.Cliente);
 
-console.log('Cliente esta conectado?', Cliente === sequelize.model.CLIENTE);
-
-module.exports = Cliente
+module.exports = Cliente;
