@@ -1,5 +1,4 @@
-const { request, response } = require("express");
-const { sequelize } = require('../config/db.config');
+const { request, response } = require("express");const { sequelize } = require('../config/db.config');
 const Departamento = require("../models/departamento.model");
 
 const crearDepartamento = async (req = request, res = response) => {

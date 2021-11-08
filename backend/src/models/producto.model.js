@@ -95,9 +95,8 @@ Producto.associations = function (models) {
     foreignKey: 'DEPARTAMENTO',
     as: 'departamento'
   });
-
+  
 }
-
 console.log('tabla producto conectada?', Producto === sequelize.models.Producto)
 
 module.exports = Producto;

@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended: true})); //permite recibir datos en format
 app.use(express.json());    //permite que el servidor entienda los datos en formato json
 
 //Rutas("ruta", "archivo de ruta")
-//app.use("/api/productos", require("./routes/producto.routes"));//ruta de productos
+app.use("/api/productos", require("./routes/producto.routes"));//ruta de productos
 app.use("/api/departamentos", require("./routes/departamento.routes"));//ruta de departamentos
 //app.use("/api/caja", require("./routes/caja.routes"));//ruta de cajas
 //app.use("/api/cliente", require("./routes/cliente.routes"));//ruta de clientes
