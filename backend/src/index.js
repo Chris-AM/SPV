@@ -18,6 +18,7 @@ app.use(express.json());    //permite que el servidor entienda los datos en form
 //Rutas("ruta", "archivo de ruta")
 app.use("/api/productos", require("./routes/producto.routes"));//ruta de productos
 app.use("/api/departamentos", require("./routes/departamento.routes"));//ruta de departamentos
+app.use("/api/personas", require("./routes/persona.routes"));//ruta de personas
 //app.use("/api/caja", require("./routes/caja.routes"));//ruta de cajas
 //app.use("/api/cliente", require("./routes/cliente.routes"));//ruta de clientes
 //se inicia servidor

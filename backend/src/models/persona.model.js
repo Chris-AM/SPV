@@ -29,7 +29,8 @@ Persona.init({
   }
 }, {
   sequelize,
-  modelName: 'PERSONA'
+  modelName: 'PERSONA',
+  timestamps: false
 });
 Persona.associations = function (models) {
   Persona.hasMany(models.Cliente, { as: "Clientes", foreignKey: "PERSONA" });

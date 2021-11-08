@@ -129,7 +129,8 @@ const actualizarProductoPorCB = async (req = request, res = response) => {
         });
         res.json({
             ok: true,
-            msg: 'Producto actualizado correctamente'
+            msg: 'Producto actualizado correctamente',
+            actualizarProducto
         });
     } catch (error) {
         console.log("error ===>", error);
