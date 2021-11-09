@@ -294,3 +294,5 @@ from USUARIO u
 right join PERSONAS p on u.persona = p.id_persona;
 
 select * from PROVEEDOR;
+
+insert into INVENTARIO (CANTIDAD, PRODUCTO, PROVEEDOR) values (50, 2, 3);
