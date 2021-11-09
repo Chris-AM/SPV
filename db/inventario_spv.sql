@@ -279,3 +279,17 @@ select c.id_cliente as 'ID del cliente',
         p.nombre as 'Nombre'
 from CLIENTE c
 inner join PERSONAS p on c.id_cliente = p.id_persona;
+
+select * from usuario;
+
+select u.id_usuario as 'ID del usuario',
+	    	P.id_persona as 'ID de la persona',
+        p.rut as 'Rut',
+        p.nombre as 'Nombre',
+(CASE
+WHEN u.es_master = 1 THEN 'SI'
+ELSE 'NO'
+END) AS 'ES MASTER'
+from USUARIO u
+right join PERSONAS p on u.persona = p.id_persona;
+
