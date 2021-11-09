@@ -1,4 +1,4 @@
-const { request } = require('express');
+const { request, response } = require('express');
 const Persona = require('../models/persona.model');
 
 const crearPersona = async (req = request, res = response) => {
