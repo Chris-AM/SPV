@@ -251,6 +251,11 @@ ALTER TABLE COMPRA
 ADD INFORMACION_MOVIMIENTO INT;
 ALTER TABLE COMPRA
 ADD CONSTRAINT FK_COMPRA_MOVIMIENTO FOREIGN KEY (INFORMACION_MOVIMIENTO) REFERENCES MOVIMIENTO(ID_MOVIMIENTO);
+-- Agregar fechas en venta
+ALTER TABLE VENTA
+ADD createdAt DATE
+ADD updatedAt DATE;
+
 /**
  
  AGREGANDO DATOS
@@ -296,3 +301,17 @@ right join PERSONAS p on u.persona = p.id_persona;
 select * from PROVEEDOR;
 
 insert into INVENTARIO (CANTIDAD, PRODUCTO, PROVEEDOR) values (50, 2, 3);
+
+
+select v.ID_VENTA as 'Número de la venta',
+      v.createdAt as 'Fecha de la venta',
+      p.CODE_BAR as 'Codigo de barras',
+      p.NOMBRE_PRODUCTO as 'Nombre del producto',
+      p.PRECIO_VENTA as 'Precio de venta',
+      mp.Tipo_medio_pago as 'Tipo de medio de pago',
+      m.Monto as 'Monto',
+      m.CANTIDAD_PRODUCTOS as 'Cantidad de productos'
+from VENTA v
+inner join PRODUCTO p on v.PRODUCTO = p.ID_PRODUCTO
+inner join MEDIO_PAGO mp on v.MEDIO_PAGO = mp.ID_MEDIO_PAGO
+inner join MOVIMIENTO m on v.INFORMACION_MOVIMIENTO = m.ID_MOVIMIENTO;
