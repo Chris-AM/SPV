@@ -1,10 +1,7 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
-const {sequelize} = require('../config/db.config');
-const Cliente = require('./cliente.model');
-const Producto = require('./producto.model');
-const Proveedor = require('./proveedor.model');
+const { sequelize } = require('../config/db.config');
 
-class Inventario extends Model {}
+class Inventario extends Model { }
 
 Inventario.init({
   ID_INVENTARIO: {
@@ -78,7 +75,7 @@ Inventario.init({
   ]
 });
 
-Inventario.associations = function(models) {
+Inventario.associations = function (models) {
   Inventario.belongsTo(models.Producto, {
     foreignKey: 'PRODUCTO',
     as: 'producto'
