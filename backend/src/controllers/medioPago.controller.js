@@ -22,7 +22,8 @@ const agregarMedioPago = async (req = request, res = response) => {
         await medioPago.save();
         res.json({
             ok: true,
-            msg: 'Medio de pago creado correctamente'
+            msg: 'Medio de pago creado correctamente',
+            medioPago
         });
     } catch (error) {
         console.log('Error ==>', error);
