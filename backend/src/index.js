@@ -25,6 +25,7 @@ app.use("/api/proveedores", require("./routes/proveedor.routes"));
 app.use("/api/inventario", require("./routes/inventario.routes"));
 app.use("/api/historialProducto", require("./routes/historialProducto.routes"));
 app.use("/api/medioPago", require("./routes/medioPago.routes"));
+app.use("/api/movimientos/", require("./routes/movimiento.routes"));
 //app.use("/api/caja", require("./routes/caja.routes"));//ruta de cajas
 //app.use("/api/cliente", require("./routes/cliente.routes"));//ruta de clientes
 //se inicia servidor
