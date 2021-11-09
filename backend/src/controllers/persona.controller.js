@@ -29,7 +29,8 @@ const crearPersona = async (req = request, res = response) => {
         await persona.save();
         res.json({
             ok: true,
-            msg: 'Persona creada correctamente'
+            msg: 'Persona creada correctamente',
+            persona
         });
     } catch (error) {
         console.log('Error ===>', error);
