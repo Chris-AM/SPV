@@ -1,15 +1,15 @@
 const Cliente = require('../models/cliente.model');
-const {request, response} = require('express');
+const { request, response } = require('express');
 
 const crearCliente = async (req = request, res = response) => {
     const persona = req.body.PERSONA;
     try {
-        const existePersona = await Cliente.findOne( {
+        const existePersona = await Cliente.findOne({
             where: {
                 PERSONA: persona
             }
-        });  
-        if(existePersona) {
+        });
+        if (existePersona) {
             return res.status(400).json({
                 ok: false,
                 msg: 'El cliente ya existe'
@@ -22,11 +22,11 @@ const crearCliente = async (req = request, res = response) => {
         res.json({
             ok: true,
             msg: 'Cliente creado correctamente'
-        });      
+        });
     } catch (error) {
         console.log('Error ==>', error);
         res.status(500).json({
-           ok: false,
+            ok: false,
             message: 'Error al crear el cliente'
         });
     }
@@ -42,13 +42,13 @@ const obtenerClientes = async (req = request, res = response) => {
     } catch (error) {
         console.log('Error ==>', error);
         res.status(500).json({
-           ok: false,
+            ok: false,
             message: 'Error al obtener los clientes'
         });
     }
 }
 
-const obtenerClientesPorId = async ( req = request, res = response) => {
+const obtenerClientesPorId = async (req = request, res = response) => {
     const id = req.params.id;
     try {
         const cliente = await Cliente.findOne({
@@ -63,7 +63,7 @@ const obtenerClientesPorId = async ( req = request, res = response) => {
     } catch (error) {
         console.log('Error ==>', error);
         res.status(500).json({
-           ok: false,
+            ok: false,
             message: 'Error al obtener el cliente'
         });
     }
@@ -71,21 +71,26 @@ const obtenerClientesPorId = async ( req = request, res = response) => {
 
 const actualizarClientePorId = async (req = request, res = response) => {
     const id = req.params.id;
-    const {PERSONA} = req.body;
+    const { PERSONA } = req.body;
     try {
         const cliente = await Cliente.findOne({
             where: {
                 ID_CLIENTE: id
             }
         });
-        if(!cliente){
+        if (!cliente) {
             return res.status(400).json({
                 ok: false,
                 msg: 'El cliente no existe'
             });
         }
         await cliente.update({
-            PERSONA
+            PERSONA: PERSONA   
+        },
+        {
+            where: {
+                ID_CLIENTE: id
+            }
         });
         res.json({
             ok: true,
@@ -94,7 +99,7 @@ const actualizarClientePorId = async (req = request, res = response) => {
     } catch (error) {
         console.log('Error ==>', error);
         res.status(500).json({
-           ok: false,
+            ok: false,
             message: 'Error al actualizar el cliente'
         });
     }
@@ -108,7 +113,7 @@ const eliminarClientePorId = async (req = request, res = response) => {
                 ID_CLIENTE: id
             }
         });
-        if(!cliente){
+        if (!cliente) {
             return res.status(400).json({
                 ok: false,
                 msg: 'El cliente no existe'
@@ -122,7 +127,7 @@ const eliminarClientePorId = async (req = request, res = response) => {
     } catch (error) {
         console.log('Error ==>', error);
         res.status(500).json({
-           ok: false,
+            ok: false,
             message: 'Error al eliminar el cliente'
         });
     }
