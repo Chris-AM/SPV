@@ -293,3 +293,4 @@ END) AS 'ES MASTER'
 from USUARIO u
 right join PERSONAS p on u.persona = p.id_persona;
 
+select * from PROVEEDOR;
