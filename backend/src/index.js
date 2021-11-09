@@ -21,6 +21,7 @@ app.use("/api/departamentos", require("./routes/departamento.routes"));//ruta de
 app.use("/api/personas", require("./routes/persona.routes"));//ruta de personas
 app.use("/api/clientes", require("./routes/cliente.routes"));//ruta de clientes
 app.use("/api/usuarios", require("./routes/usuario.routes"));
+app.use("/api/proveedores", require("./routes/proveedor.routes"));
 //app.use("/api/caja", require("./routes/caja.routes"));//ruta de cajas
 //app.use("/api/cliente", require("./routes/cliente.routes"));//ruta de clientes
 //se inicia servidor
