@@ -1,9 +1,5 @@
 const {Sequelize, DataTypes, Model} = require('sequelize');
 const {sequelize} = require('../config/db.config');
-const DetalleVenta = require('./detalleVenta.model');
-const MedioPago = require('./medioPago.model');
-const Movimiento = require('./movimiento.model');
-const Producto = require('./producto.model');
 
 class Venta extends Model {}
 
@@ -41,7 +37,7 @@ Venta.init({
 }, {
   sequelize,
   tableName: 'VENTA',
-  timestamps: false,
+  timestamps: true,
   indexes: [
     {
       name: "PRIMARY",
